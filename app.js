@@ -87,6 +87,7 @@ app.post('/addRegistration', async (req, res) => {
   });
 
 
+
 // Update to Database
 app.post('/updateVehicleData', async (req, res) => {
 
@@ -111,6 +112,7 @@ app.post('/updateVehicleData', async (req, res) => {
     }
   
   });
+
 
 app.listen(port, () => {
   console.log(`quebec app listening on port ${port}`)
