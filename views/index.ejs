@@ -1,27 +1,30 @@
 <%- include('partials/html-start.ejs') %>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <div class="container-fluid">
-       <a class="navbar-brand"><%= pageTitle %></a>
-         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-         <span class="navbar-toggler-icon"></span>
-         </button>
-     <div class="collapse navbar-collapse" id="collapsibleNavbar">
-       <ul class="navbar-nav">
-         <li class="nav-item">
-           <a class="nav-link" target="foxtrotcode" href="https://github.com/cnorwood10/stunning-octo-enigma-quebec">Source Code</a>
-         </li>
-         <li>
-           <a class="nav-link" target="blank" href="https://github.com/cnorwood10">About Me</a>
-         </li>
-       </ul>
-     </div>
-     </div>
-   </nav>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand">
+                <%= pageTitle %>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" target="foxtrotcode"
+                            href="https://github.com/cnorwood10/stunning-octo-enigma-quebec">Source Code</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" target="blank" href="https://github.com/cnorwood10">About Me</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-   <h1>Vehicle Registration Center</h1>
+    <h1>Vehicle Registration Center</h1>
     <% for (var i=0; i< vehicleData.length; i++ ) { %>
         <hr>
-        
+
         <div class="row">
             <div class="card col-md-4 ">
                 <h3>Current Vehicles</h3>
@@ -35,11 +38,11 @@
 
                 <p>Mileage: <%= vehicleData[i].vehicleMileage %></p>
             </div>
-        
-        
-        <br>
 
-        
+
+            <br>
+
+
             <div class="card col-md-4">
                 <h3>Update your Vehicle Registration</h3>
 
@@ -52,7 +55,7 @@
                         <input type="text" id="name" name="name" value="<%= vehicleData[i].name %>"></input>
                         <br></br>
                         <label for="vehicleMileage">New Mileage: </label>
-                        <input type="number" id="vehicleMileage" name="vehicleMileage"value="<%= vehicleData[i].vehicleMileage %>">
+                        <input type="number" id="vehicleMileage" name="vehicleMileage" value="<%= vehicleData[i].vehicleMileage %>">
                         <br><br>
                         <button class="btn btn-primary" type="submit" formaction="/updateVehicleData">Update VehicleData</button>
                         <button class="btn btn-danger" type="submit" formaction="/deleteVehicleData">Delete Vehicle Data</button>
@@ -61,7 +64,7 @@
             </div>
         </div>
         <% } %>
-        <br><br>
+            <br><br>
             <div class="row">
                 <div class="card col-md-4">
                     <h3>New Vehicle</h3>
