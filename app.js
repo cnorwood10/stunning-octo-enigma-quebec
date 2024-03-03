@@ -86,30 +86,6 @@ app.post('/addRegistration', async (req, res) => {
   });
 
 
-// Update to Database
-app.post('/updateDrink/:id', async (req, res) => {
-
-    let update = await connectVehicleData();
-
-    try {
-      console.log("req.parms.id: ", req.params.id) 
-      
-      client.connect;
-      let result = await collection.findOneAndUpdate( 
-        {"_id": ObjectId(req.params.id)}, { $set: {"size": "REALLY BIG DRINK" } }
-      )
-      .then(result => {
-        console.log(result); 
-        res.redirect('/');
-      })
-      .catch(error => console.error(error))
-    }
-    finally{
-      //client.close()
-    }
-  
-  })
-
 app.listen(port, () => {
   console.log(`quebec app listening on port ${port}`)
 })
