@@ -87,17 +87,18 @@ app.post('/addRegistration', async (req, res) => {
 
 
 // Update to Database
-app.post('/updateDrink/:id', async (req, res) => {
-
-    let update = await connectVehicleData();
+app.post('/updateVehicleData', async (req, res) => {
 
     try {
-      console.log("req.parms.id: ", req.params.id) 
+
+      console.log("params.id: ", req.params.id);
       
-      client.connect;
+      client.connect; 
+      const collection = client.db("quebec-database").collection("quebec");
       let result = await collection.findOneAndUpdate( 
-        {"_id": ObjectId(req.params.id)}, { $set: {"size": "REALLY BIG DRINK" } }
-      )
+        {"_id": (req.body.id)}, 
+        {$set: {"name": "Colby Norwood" }})
+
       .then(result => {
         console.log(result); 
         res.redirect('/');
@@ -108,7 +109,7 @@ app.post('/updateDrink/:id', async (req, res) => {
       //client.close()
     }
   
-  })
+  });
 
 app.listen(port, () => {
   console.log(`quebec app listening on port ${port}`)
