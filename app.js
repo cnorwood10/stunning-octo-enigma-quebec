@@ -99,7 +99,8 @@ app.post('/updateVehicleData', async (req, res) => {
       const collection = client.db("quebec-database").collection("quebec");
       let result = await collection.findOneAndUpdate( 
         {_id: new ObjectId(req.body.id)}, 
-        {$set: {name: req.body.name }})
+        {$set: {name: req.body.name ,vehicleMileage: req.body.vehicleMileage}}
+        )
 
       .then(result => {
         console.log(result); 
