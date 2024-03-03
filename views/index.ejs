@@ -13,8 +13,27 @@
 
 <p>Year: <%= vehicleData[0].vehicleYear %></p>
 
-    <footer> Projecting Results from Database <br>
+<p>Mileage: <%= vehicleData[0].vehicleMileage  %></p>
 
+<form method="POST" action="/addRegistration">
+    <label for="name">Owner of Vehicle: </label>
+    <input name="name" placeholder="Name">
+    <br>
+    <label for="vehicleMake">Make: </label>
+    <input name="vehicleMake" placeholder="Make">
+    <br>
+    <label for="vehicleModel">Model: </label>
+    <input name="vehicleModel" placeholder="Model">
+    <br>
+    <label for="vehicleYear">Year: </label>
+    <input name="vehicleYear" placeholder="Year">
+    <br>
+    <label for="vehicleMileage">Miles: </label>
+    <input name="vehicleMileage" placeholder="Miles">
+    <br>
+    <input type="submit" value="Register" />
+</form>
+<br>
     <a href="https://github.com/cnorwood10/improved-invention-papa" target="_blank">Source Code</a>
 
 </footer>
