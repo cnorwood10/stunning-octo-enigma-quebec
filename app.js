@@ -114,6 +114,30 @@ app.post('/updateVehicleData', async (req, res) => {
   
   });
 
+  // Delete from Database
+  app.post('/deleteVehicleData', async (req, res) => {
+
+    try {
+        console.log("body: ", req.body); 
+      
+      client.connect; 
+      const collection = client.db("quebec-database").collection("quebec");
+      let result = await collection.findOneAndDelete( 
+        {
+          "_id": new ObjectId(req.body.id)
+        }
+      )
+      .then(result => {
+        console.log(result); 
+        res.redirect('/');
+      })
+      .catch(error => console.error(error))
+    }
+    finally{
+      //client.close()
+    }
+  
+  })
 
 app.listen(port, () => {
   console.log(`quebec app listening on port ${port}`)
