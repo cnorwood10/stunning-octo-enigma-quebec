@@ -85,10 +85,6 @@ app.post('/addRegistration', async (req, res) => {
   
   });
 
-app.get('/add', async (req,res) => {
-    
-
-});
 
 // Update to Database
 app.post('/updateDrink/:id', async (req, res) => {
