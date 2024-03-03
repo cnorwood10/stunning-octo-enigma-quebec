@@ -1,4 +1,4 @@
-<h1>Colby's Vehicle Ownership App<</h1>
+<h1>Colby's Vehicle Ownership App</h1>
 
 <details>
 <summary>Technologies Used</summary>
