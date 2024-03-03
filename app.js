@@ -8,8 +8,11 @@ const bodyParser =  require("body-parser");
 
 // set the view engine to ejs
 let path = require('path');
+
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // use res.render to load up an ejs view file
 
@@ -42,6 +45,7 @@ async function getVehicleData() {
     }
   }
 
+// Read from Database
 app.get('/', async (req,res) => {
 
   let result = await getVehicleData();
@@ -56,10 +60,31 @@ app.get('/', async (req,res) => {
 
 });
 
-app.get('/add', async (req,res) => {
-    
+//Create to Database
+app.post('/addRegistration', async (req, res) => {
 
-});
+    try {
+      // console.log("req.body: ", req.body) 
+      client.connect; 
+      const collection = client.db("quebec-database").collection("quebec");
+      
+      //draws from body parser 
+      console.log(req.body);
+      
+      await collection.insertOne(req.body);
+        
+  
+      res.redirect('/');
+    }
+    catch(err){
+      console.log(err)
+    }
+    finally{
+     // client.close()
+    }
+  
+  });
+
 
 app.listen(port, () => {
   console.log(`quebec app listening on port ${port}`)
