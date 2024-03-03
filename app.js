@@ -1,9 +1,10 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 5500;
+const bodyParser = require('body-parser')
+const { ObjectId } = require('mongodb')
+const port = (process.env.PORT || 5500)
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const bodyParser =  require("body-parser");
 
 
 // set the view engine to ejs
@@ -18,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(process.env.URI, {
+const client = new MongoClient(process.env.MONGO_URI, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
@@ -81,6 +82,33 @@ app.post('/addRegistration', async (req, res) => {
     }
     finally{
      // client.close()
+    }
+  
+  });
+
+
+
+// Update to Database
+app.post('/updateVehicleData', async (req, res) => {
+
+    try {
+
+      console.log("body: ", req.body);
+      
+      client.connect; 
+      const collection = client.db("quebec-database").collection("quebec");
+      let result = await collection.findOneAndUpdate( 
+        {_id: new ObjectId(req.body.id)}, 
+        {$set: {name: req.body.name }})
+
+      .then(result => {
+        console.log(result); 
+        res.redirect('/');
+      })
+      .catch(error => console.error(error))
+    }
+    finally{
+      //client.close()
     }
   
   });

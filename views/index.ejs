@@ -34,6 +34,25 @@
     <input type="submit" value="Register" />
 </form>
 <br>
+
+<div class="row">
+    <div class="col-md-6">
+      <h2>Update your Vehicle Registration</h2>
+  
+      <%= console.log(vehicleData) %>
+      
+      <% for (var i=0; i< vehicleData.length; i++ ) { %>
+        <form method="POST">  
+          <input type="hidden" id="id" name="id" value="<%= vehicleData[i]._id %>"></input>
+          <input type="text" id="name" name="name" value="<%= vehicleData[i].name %>"></input>
+          <br></br>
+          <button class="btn btn-primary" type="submit" formaction="/updateVehicleData">Update Vehicle Data</button>
+          <button class="btn btn-danger" type="submit" formaction="/deleteProfile">Delete Vehicle Data </button>
+        
+        </form>
+        <br/>
+        <% } %> 
+    </div>
     <a href="https://github.com/cnorwood10/improved-invention-papa" target="_blank">Source Code</a>
 
 </footer>
