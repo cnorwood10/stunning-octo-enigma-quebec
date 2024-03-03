@@ -1,4 +1,4 @@
-#Colby's Vehicle Ownership App
+<h1>Colby's Vehicle Ownership App<</h1>
 
 <details>
 <summary>Technologies Used</summary>
@@ -24,7 +24,7 @@
   4. Test code on local dev box before committing to GitHub
 </details>
 
-##Render
+<h2>Render</h2>
 Render is a platform as a service that will allow you to connect to their servers in order to run a web service. Use this when you have tested the code on your local dev box
 
 Store URI in environment variables so Render can connect to your created Database.
