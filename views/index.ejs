@@ -44,8 +44,12 @@
       <% for (var i=0; i< vehicleData.length; i++ ) { %>
         <form method="POST">  
           <input type="hidden" id="id" name="id" value="<%= vehicleData[i]._id %>"></input>
+          <label for="name">New Owner: </label>
           <input type="text" id="name" name="name" value="<%= vehicleData[i].name %>"></input>
           <br></br>
+          <label for="vehicleMileage">New Mileage: </label>
+          <input  type="number" id="vehicleMileage" name="vehicleMileage" value="<%= vehicleData[i].vehicleMileage %>">
+          <br><br>
           <button class="btn btn-primary" type="submit" formaction="/updateVehicleData">Update Vehicle Data</button>
           <button class="btn btn-danger" type="submit" formaction="/deleteProfile">Delete Vehicle Data </button>
         
