@@ -23,7 +23,7 @@ const client = new MongoClient(process.env.URI, {
   }
 });
 
-async function getVehicleData() {
+async function connectVehicleData() {
     try {
       // Connect the client to the server	(optional starting in v4.7)
       await client.connect();
@@ -44,7 +44,7 @@ async function getVehicleData() {
 
 app.get('/', async (req,res) => {
 
-  let result = await getVehicleData();
+  let result = await connectVehicleData();
 
   console.log("myResults:", result);
 
@@ -56,10 +56,29 @@ app.get('/', async (req,res) => {
 
 });
 
-app.get('/add', async (req,res) => {
-    
+// Update to Database
+app.post('/updateDrink/:id', async (req, res) => {
 
-});
+    let update = await connectVehicleData();
+
+    try {
+      console.log("req.parms.id: ", req.params.id) 
+      
+      client.connect;
+      let result = await collection.findOneAndUpdate( 
+        {"_id": ObjectId(req.params.id)}, { $set: {"size": "REALLY BIG DRINK" } }
+      )
+      .then(result => {
+        console.log(result); 
+        res.redirect('/');
+      })
+      .catch(error => console.error(error))
+    }
+    finally{
+      //client.close()
+    }
+  
+  })
 
 app.listen(port, () => {
   console.log(`quebec app listening on port ${port}`)
